@@ -17,3 +17,8 @@ sysinfo.txt
 
 # Mac
 .DS_Store
+
+# metafiles
+Library/
+Temp/
+[Oo]bj/
