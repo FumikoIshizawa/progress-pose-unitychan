@@ -8,8 +8,11 @@ public class UnityChanController : MonoBehaviour {
 	private int doWalkId;
 	private int doRunId;
 	private int count_walk = 0;
-	
+  private SceneManager sceneManager;
+
 	void Start () {
+    sceneManager = GameObject.Find("SceneManager").GetComponent<SceneManager>();
+    sceneManager.AddGameObj(this.gameObject);
 		animator = GetComponent<Animator> ();
 		doWalkId = Animator.StringToHash ("Do WALK");
 		doRunId = Animator.StringToHash ("Do RUN");
