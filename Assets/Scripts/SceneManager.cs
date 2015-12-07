@@ -40,17 +40,17 @@ public class SceneManager : MonoBehaviour {
     string urlHealth = url + healthUrlParameter;
  	
     WWW www = new WWW (urlHealth);
-	yield return www; 
+    yield return www; 
 
-	JSONObject json = new JSONObject (www.text);
-	JSONObject latestData = json [6]; 
+    JSONObject json = new JSONObject (www.text);
+    JSONObject latestData = json [6]; 
 
-	latestDate = latestData.GetField("date").str; 
-	github_score = latestData.GetField ("github_score").GetField("value").n;
-	slack_score = latestData.GetField ("slack_score").GetField("value").n;
-	photo_score = latestData.GetField ("photo_score").GetField("value").n; 
-	// Debug output
-	Debug.Log ("Result(" + latestDate + "): " + github_score + ", " + slack_score + ", " + photo_score); 
+    latestDate = latestData.GetField("date").str; 
+    github_score = latestData.GetField ("github_score").GetField("value").n; 
+    slack_score = latestData.GetField ("slack_score").GetField("value").n;
+    photo_score = latestData.GetField ("photo_score").GetField("value").n; 
+    // Debug output
+    // Debug.Log ("Result(" + latestDate + "): " + github_score + ", " + slack_score + ", " + photo_score); 
   }
 
   private void notifyAllObj(float value)
