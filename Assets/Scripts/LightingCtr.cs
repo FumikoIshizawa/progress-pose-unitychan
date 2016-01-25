@@ -26,7 +26,6 @@ public class LightingCtr : MonoBehaviour, IReciever {
   public void OnRecieve(float value)
   {
     skybox.SetFloat("_AtmosphereThickness", 1f - value * ratio);
-    Debug.Log("Atmos=>" + value*ratio);
     RenderSettings.skybox = skybox;
     dLight.intensity = (1f-value*ratio);
   }

@@ -11,12 +11,13 @@ public class SceneManager : MonoBehaviour {
   double github_score = 0;
   double slack_score = 0;
   double photo_score = 0;
+	float total_score = 0;
 
   private List<GameObject> allObj = new List<GameObject>();
 	// Use this for initialization
 	void Start () {
-    var value = getTeamStatus();
-    notifyAllObj(value);
+		getTeamStatus();
+		notifyAllObj(total_score);
 	}
 	
 	// Update is called once per frame
@@ -29,11 +30,14 @@ public class SceneManager : MonoBehaviour {
     allObj.Add(go);
   }
 
-  private float getTeamStatus()
+	private void getTeamStatus()
   {
     StartCoroutine (getHealthStatus());
-    return 10f;
   }
+	private float calcTeamScore(){
+		// range 0f-10f
+		return (float)(github_score + photo_score + slack_score) / 0.3f;
+	}
 
   IEnumerator getHealthStatus() 
   {
@@ -49,8 +53,9 @@ public class SceneManager : MonoBehaviour {
     github_score = latestData.GetField ("github_score").GetField("value").n; 
     slack_score = latestData.GetField ("slack_score").GetField("value").n;
     photo_score = latestData.GetField ("photo_score").GetField("value").n; 
+		total_score = calcTeamScore ();
     // Debug output
-    // Debug.Log ("Result(" + latestDate + "): " + github_score + ", " + slack_score + ", " + photo_score); 
+    Debug.Log ("Result(" + latestDate + "): " + github_score + ", " + slack_score + ", " + photo_score); 
   }
 
   private void notifyAllObj(float value)
@@ -63,15 +68,13 @@ public class SceneManager : MonoBehaviour {
         functor: (target, y) => target.OnRecieve(value));
     }
   }
-  
-    float num = 0;
     void OnGUI(){
         var stylestate = new GUIStyleState();
         stylestate.textColor = Color.magenta;
         var style = new GUIStyle();
         style.normal = stylestate;
-        num = GUI.HorizontalSlider(new Rect(100, 200, 100, 20), num, 0f, 10f);
-        GUI.Label( new Rect(220, 200, 200, 20), num.ToString(), style);
-        notifyAllObj(num);
+        total_score = GUI.HorizontalSlider(new Rect(100, 200, 100, 20), total_score, 0f, 10f);
+        GUI.Label( new Rect(220, 200, 200, 20), total_score.ToString(), style);
+        notifyAllObj(total_score);
   }
 }
