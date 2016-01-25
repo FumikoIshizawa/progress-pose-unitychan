@@ -16,7 +16,7 @@ public class SceneManager : MonoBehaviour {
   private List<GameObject> allObj = new List<GameObject>();
 	// Use this for initialization
 	void Start () {
-		total_score = (float)getTeamStatus();
+		getTeamStatus();
 		notifyAllObj(total_score);
 	}
 	
@@ -30,11 +30,14 @@ public class SceneManager : MonoBehaviour {
     allObj.Add(go);
   }
 
-  private float getTeamStatus()
+	private void getTeamStatus()
   {
     StartCoroutine (getHealthStatus());
-    return 10f;
   }
+	private float calcTeamScore(){
+		// range 0f-10f
+		return (float)(github_score + photo_score + slack_score) / 0.3f;
+	}
 
   IEnumerator getHealthStatus() 
   {
@@ -50,8 +53,9 @@ public class SceneManager : MonoBehaviour {
     github_score = latestData.GetField ("github_score").GetField("value").n; 
     slack_score = latestData.GetField ("slack_score").GetField("value").n;
     photo_score = latestData.GetField ("photo_score").GetField("value").n; 
+		total_score = calcTeamScore ();
     // Debug output
-    // Debug.Log ("Result(" + latestDate + "): " + github_score + ", " + slack_score + ", " + photo_score); 
+    Debug.Log ("Result(" + latestDate + "): " + github_score + ", " + slack_score + ", " + photo_score); 
   }
 
   private void notifyAllObj(float value)
