@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Linq;
-using System.Collections.Generic;
 
 public class DebugMotion : MonoBehaviour {
     private bool _ondebug;
@@ -12,18 +11,10 @@ public class DebugMotion : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	   motion = gameObject.GetComponent<Animator>();
-       if(motions!=null){
-           Debug.Log("all motions:");
-           foreach (var item in new List<string>(motions))
-           {
-               Debug.Log(" " + item + " ");
-           }
-       }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	   Debug.Log(OnDebug);
 	}
     
     
@@ -44,7 +35,7 @@ public class DebugMotion : MonoBehaviour {
             }
         }
         else {
-            if (GUI.Button(new Rect(20, 20, 100, 50), "Button"))
+            if (GUI.Button(new Rect(20, 20, 120, 35), "ALL MOTIONS"))
             {
                 OnDebug = true;
             }

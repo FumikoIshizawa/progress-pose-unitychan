@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
 public class LightingCtr : MonoBehaviour, IReciever {
 
     private SceneManager sceneManager;
