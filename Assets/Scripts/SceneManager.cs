@@ -68,13 +68,15 @@ public class SceneManager : MonoBehaviour {
         functor: (target, y) => target.OnRecieve(value));
     }
   }
+	float prebScore = 0f;
     void OnGUI(){
         var stylestate = new GUIStyleState();
         stylestate.textColor = Color.magenta;
         var style = new GUIStyle();
         style.normal = stylestate;
+		prebScore = total_score;
         total_score = GUI.HorizontalSlider(new Rect(100, 200, 100, 20), total_score, 0f, 10f);
         GUI.Label( new Rect(220, 200, 200, 20), total_score.ToString(), style);
-        notifyAllObj(total_score);
+		notifyAllObj(total_score);
   }
 }
