@@ -20,7 +20,7 @@ public class FearMode : MonoBehaviour {
 			var currentState = motion.GetCurrentAnimatorStateInfo (0);
 			if (currentState.fullPathHash == Fear1) {
 				count++;
-				if (count > 180) {
+				if (count > 120) {
 					count = 0;
 					motion.SetTrigger ("Fear2");
 					motion.SetTrigger ("Fear1");

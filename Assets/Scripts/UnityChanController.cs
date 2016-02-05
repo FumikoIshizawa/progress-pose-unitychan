@@ -39,7 +39,7 @@ public class UnityChanController : MonoBehaviour, IReciever {
 			var currentState = animator.GetCurrentAnimatorStateInfo (0);
 			if (currentState.fullPathHash == waiting1) {
 				count++;
-				if (count > 180) {
+				if (count > 120) {
 					count = 0;
 					setWait (2);
 					setWait (1);
@@ -71,14 +71,11 @@ public class UnityChanController : MonoBehaviour, IReciever {
 	}
 
 	public void OnRecieve(float value){
-		Debug.Log ("やぁ！");
 		float threshold = 5f;
 		if (threshold < value) {
-			Debug.Log ("TO FEAR");
 			animator.SetBool ("BasicMode", false);
 			animator.SetBool ("FearMode", true);
 		} else if (threshold >= value) {
-			Debug.Log ("TO BASIC");
 			animator.SetBool ("BasicMode", true);
 			animator.SetBool ("FearMode", false);			
 		}
