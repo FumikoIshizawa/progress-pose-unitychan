@@ -7,8 +7,8 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 
 public class serif_importer : AssetPostprocessor {
-	private static readonly string filePath = "Assets/Terasurware/Excel/serif.xls";
-	private static readonly string exportPath = "Assets/Terasurware/Excel/serif.asset";
+	private static readonly string filePath = "Assets/Resources/DATA/serif.xls";
+	private static readonly string exportPath = "Assets/Resources/DATA/serif.asset";
 	private static readonly string[] sheetNames = { "serif", };
 	
 	static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
