@@ -80,4 +80,13 @@ public class UnityChanController : MonoBehaviour, IReciever {
 			animator.SetBool ("FearMode", false);			
 		}
 	}
+    void OnGUI(){
+        float width = 150f;
+        float height = 45f;
+        float startx = 240f;
+        float starty = 480f;
+        if(GUI.Button(new Rect(startx,starty,width,height), "草原へ")){
+            transform.position = new Vector3(-32f,0f,-40f);
+        }
+    }
 }
