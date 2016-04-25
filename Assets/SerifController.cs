@@ -37,7 +37,7 @@ public class SerifController : MonoBehaviour {
             float x = startx;
             if (item.i%2 != 0) x += width * 1.2f;
             float y = starty + item.i * height * 0.8f;
-            if(GUI.Button(new Rect(x,y,width,height),(item.i+1).ToString())){
+            if(item.i < 25 && GUI.Button(new Rect(x,y,width,height),(item.i+1).ToString())){
                 ChangeSerif(item.i);
                 audioSource.Play();
                 Debug.Log("serif => " + item.v);

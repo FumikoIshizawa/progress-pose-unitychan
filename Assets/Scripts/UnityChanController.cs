@@ -84,7 +84,7 @@ public class UnityChanController : MonoBehaviour, IReciever {
         float width = 150f;
         float height = 45f;
         float startx = 240f;
-        float starty = 560f;
+        float starty = 640f;
         if(GUI.Button(new Rect(startx,starty,width,height), "草原へ")){
             transform.position = new Vector3(-32f,0f,-40f);
         }
