@@ -89,7 +89,7 @@ public class UnityChanController : MonoBehaviour, IReciever {
             transform.position = new Vector3(-22f,2f,-50f);
         }
         if(GUI.Button(new Rect(startx,starty+height*1.5f,width*0.8f,height*0.8f), "森へ")){
-            transform.position = new Vector3(0f,0f,0f);
+            transform.position = new Vector3(10f,2f,-22f);
         }
     }
 }
