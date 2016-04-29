@@ -29,9 +29,9 @@ public class SerifController : MonoBehaviour {
     
     void OnGUI(){
         float width = 72f;
-        float height = 25f;
+        float height = 32f;
         float startx = 240f;
-        float starty = 120f;
+        float starty = 60f;
         foreach (var item in serifs.Select((v, i) => new { v, i }))
         {
             float x = startx;
